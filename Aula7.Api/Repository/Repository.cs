@@ -1,4 +1,6 @@
-﻿using Aula7.Api.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using Aula7.Api.Interfaces;
 
 namespace Aula7.Api.Repository
 {

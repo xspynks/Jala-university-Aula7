@@ -1,4 +1,6 @@
-﻿namespace Aula7.Api.Interfaces
+﻿using System.Collections.Generic;
+
+namespace Aula7.Api.Interfaces
 {
     public interface IRepository<TInstance>
     {
