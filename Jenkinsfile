@@ -2,19 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Publish') {
             steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying.... and changing something'
+                echo 'Publishing....'
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'token-docker') {
+                        def dockerImage = docker.build("xspynks/counter-image:${env.BUILD_ID}", "./Jala-university-Aula7/")
+                        dockerImage.push("$BUILD_NUMBER")
+                        dockerImage.push('latest')
+                    }
+                }
             }
         }
     }
